@@ -32,21 +32,22 @@ class heap:
 
     def heapify(self):
         last_elem = len(self.tree)-1
-        for last in range(last_elem, 0, -1):
-            if(last > 1):
-                iter2 = last - 1
-                if(self.tree[last].father == self.tree[iter2].father):
-                    min_value = min(self.tree[last].data, self.tree[iter2].data)
-                    if(self.tree[last].data == min_value):
-                        elem_change = self.tree[last]
+        for last_1 in range(last_elem, 0, -1):
+            for last in range(last_elem, 0, -1):
+                if(last > 1):
+                    iter2 = last - 1
+                    if(self.tree[last].father == self.tree[iter2].father):
+                        min_value = min(self.tree[last].data, self.tree[iter2].data)
+                        if(self.tree[last].data == min_value):
+                            elem_change = self.tree[last]
+                        else:
+                            elem_change = self.tree[last-1]
+                        if(min_value<self.tree[elem_change.father].data):
+                            self.swap(elem_change, self.tree[elem_change.father])
                     else:
-                        elem_change = self.tree[last-1]
-                    if(min_value<self.tree[elem_change.father].data):
-                        self.swap(elem_change, self.tree[elem_change.father])
-                else:
-                    elem_change = self.tree[last]
-                    if(elem_change.data < self.tree[elem_change.father].data):
-                        self.swap(elem_change, self.tree[elem_change.father])
+                        elem_change = self.tree[last]
+                        if(elem_change.data < self.tree[elem_change.father].data):
+                            self.swap(elem_change, self.tree[elem_change.father])
                         
     def printer_list(self):
         for i in range(0,len(self.tree)):
