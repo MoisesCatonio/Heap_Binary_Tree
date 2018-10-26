@@ -13,10 +13,10 @@ class heap:
     def determine_positions(self):
         for i in range(0, len(self.tree)):
             self.own_pos = i
-            self.tree[i].left_son = 2*i+1
-            self.tree[i].right_son = 2*i+2
+            self.tree[i].left_son = int(2*i+1)
+            self.tree[i].right_son = int(2*i+2)
             if(i != 0):
-                self.tree[i].father = (i-1)/2
+                self.tree[i].father = int((i-1)/2)
             else:
                 self.tree[i].father = None
 
@@ -28,10 +28,28 @@ class heap:
         aux = self.tree[elem1.own_pos]
         self.tree[elem1.own_pos] = self.tree[elem2.own_pos] 
         self.tree[elem2.own_pos] = aux
+        self.determine_positions()
+        
+    def heapify(self):
+        last_elem = len(self.tree)-1
+        for last in range(last_elem, 0):
+            if(last > 1):
+                iter2 = last - 1
+                if(self.tree[last].father == self.tree[iter2].father):
+                    min_value = min(self.tree[last].data, self.tree[iter2].data)
+                    if(self.tree[last].data == min_value):
+                        elem_change = self.tree[last]
+                    else:
+                        elem_change = self.tree[last-1]
+                    if(min_value<self.tree[elem_change.father].data):
+                        self.swap(elem_change, self.tree[elem_change.father])
 
-    def get_dado(self, position):
-        return self.tree[position].data
-    
+
+    def test(self):
+        last_elem = len(self.tree)
+        if(last_elem%2 == 0):
+            for last in range(last_elem, 0, -2):
+                print(last)
     def printer_list(self):
         for i in range(0,len(self.tree)):
             print(str(self.tree[i].data) + ", ")
