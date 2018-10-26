@@ -12,7 +12,7 @@ class heap:
 
     def determine_positions(self):
         for i in range(0, len(self.tree)):
-            self.own_pos = i
+            self.tree[i].own_pos = i
             self.tree[i].left_son = int(2*i+1)
             self.tree[i].right_son = int(2*i+2)
             if(i != 0):
@@ -29,10 +29,10 @@ class heap:
         self.tree[elem1.own_pos] = self.tree[elem2.own_pos] 
         self.tree[elem2.own_pos] = aux
         self.determine_positions()
-        
+
     def heapify(self):
         last_elem = len(self.tree)-1
-        for last in range(last_elem, 0):
+        for last in range(last_elem, 0, -1):
             if(last > 1):
                 iter2 = last - 1
                 if(self.tree[last].father == self.tree[iter2].father):
@@ -44,12 +44,6 @@ class heap:
                     if(min_value<self.tree[elem_change.father].data):
                         self.swap(elem_change, self.tree[elem_change.father])
 
-
-    def test(self):
-        last_elem = len(self.tree)
-        if(last_elem%2 == 0):
-            for last in range(last_elem, 0, -2):
-                print(last)
     def printer_list(self):
         for i in range(0,len(self.tree)):
             print(str(self.tree[i].data) + ", ")
