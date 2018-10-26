@@ -43,7 +43,11 @@ class heap:
                         elem_change = self.tree[last-1]
                     if(min_value<self.tree[elem_change.father].data):
                         self.swap(elem_change, self.tree[elem_change.father])
-
+                else:
+                    elem_change = self.tree[last]
+                    if(elem_change.data < self.tree[elem_change.father].data):
+                        self.swap(elem_change, self.tree[elem_change.father])
+                        
     def printer_list(self):
         for i in range(0,len(self.tree)):
             print(str(self.tree[i].data) + ", ")
