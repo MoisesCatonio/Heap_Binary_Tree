@@ -12,13 +12,15 @@ f = hp.element(3)#filho do 4 (Have to switch with 4)
 g = hp.element(10)#filho do 4 (Stay in place)
 new_tree = hp.heap()
 
-new_tree.add_element(a)
+
+#Switch and play with the positions, to test the different configurations.
+new_tree.add_element(f)
+new_tree.add_element(d)
+new_tree.add_element(g)
+new_tree.add_element(e)
 new_tree.add_element(b)
 new_tree.add_element(c)
-new_tree.add_element(d)
-new_tree.add_element(e)
-new_tree.add_element(f)
-new_tree.add_element(g)
+new_tree.add_element(a)
 
 print("Before heapify")
 new_tree.printer_list()
