@@ -50,6 +50,7 @@ class heap:
             if(last > 1):
                 iter2 = last - 1
                 self.up(last, iter2)
+        self.up(last_elem - last, iter2)
         self.determine_positions()
                         
     def printer_list(self):

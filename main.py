@@ -14,12 +14,12 @@ new_tree = hp.heap()
 
 
 #Switch and play with the positions, to test the different configurations.
-new_tree.add_element(f)
-new_tree.add_element(d)
 new_tree.add_element(g)
-new_tree.add_element(e)
 new_tree.add_element(b)
 new_tree.add_element(c)
+new_tree.add_element(e)
+new_tree.add_element(d)
+new_tree.add_element(f)
 new_tree.add_element(a)
 
 print("Before heapify")
